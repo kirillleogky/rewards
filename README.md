@@ -1,2 +1,1 @@
-# rewards
 Peer rewards application
