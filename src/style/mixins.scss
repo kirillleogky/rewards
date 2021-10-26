@@ -1,0 +1,40 @@
+@mixin responsive-left-right-spacing($coef:1, $coef-mobile: 1) {
+  padding-left: $responsive-space-small * $coef;
+  padding-right: $responsive-space-small * $coef;
+  @include media-breakpoint-up($bg) {
+    padding-left: $responsive-space-base * $coef;
+    padding-right: $responsive-space-base * $coef;
+  }
+  @include media-breakpoint-up($lg) {
+    padding-left: $responsive-space-large * $coef;
+    padding-right: $responsive-space-large * $coef;
+  }
+  @include media-mobile {
+    padding-left: 20px * $coef-mobile;
+    padding-right: 20px * $coef-mobile;
+  }
+}
+
+@mixin media-desktop() {
+  @include media-breakpoint-up($md) {
+    @content;
+  }
+}
+
+@mixin media-mobile() {
+  @include media-breakpoint-down($md) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($breakpoint) {
+  @media (min-width: $breakpoint + 1) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
