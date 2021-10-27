@@ -1,0 +1,40 @@
+.form, .label {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: rgb(151, 158, 166);
+  margin-bottom: 28px;
+}
+
+.input {
+  border-radius: 60px;
+}
+
+.input, .textarea {
+  margin-top: 4px;
+  padding: 16px;
+  background-color: rgb(245, 247, 249);
+  font-family: Inter-Medium, sans-serif;
+  font-size: 16px;
+  &::placeholder {
+    font-family: Inter-Medium, sans-serif;
+    font-size: 16px;
+    color: rgb(151, 158, 166);
+  }
+}
+
+.textarea {
+  border-radius: 25px;
+}
+
+.submit-btn {
+  font-family: Inter-Medium, sans-serif;
+  font-size: 16px;
+  background-color: rgb(245, 247, 249);
+  color: rgb(151, 158, 166);
+  border-radius: 60px;
+  cursor: pointer;
+  padding: 16px;
+}

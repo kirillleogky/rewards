@@ -1,10 +1,88 @@
 .profile {
+  background-color: rgb(241, 241, 241);
   &__container {
     @include responsive-left-right-spacing;
     padding-top: 20px;
-    height: 100%;
-    background-color: rgb(245, 247, 249);
     margin: 0 auto;
+  }
+  &__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  &__personal-gratitude {
+    padding-right: 4px;
+  }
+  &__personal-reward, &__personal-gratitude {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    @include media-breakpoint-up($md) {
+      width: 15vw;
+    }
+    @include media-breakpoint-down($md) {
+      width: 20vw;
+    }
+    @include media-breakpoint-down($sm) {
+      width: 30vw;
+    }
+  }
+  &__personal-info-amount {
+    font-size: 36px;
+  }
+  &__personal-info-text {
+    font-size: 16px;
+    color: rgb(151, 158, 166);
+  }
+  &__personal-info {
+    margin: 0 28px;
+    text-align: center;
+  }
+  &__personal-image {
+    width: $rewardful-person-image-width-big;
+    height: $rewardful-person-image-height-big;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  &__navigation-item {
+    padding: 8px 16px;
+    border-radius: 40px;
+    color: rgb(151, 158, 166);
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      background: rgb(245, 247, 249);
+    }
+    &:active {
+      background: rgb(218, 222, 226);
+    }
+    &--active {
+      background: rgb(119, 255, 55);
+      color: initial;
+      &:hover {
+        background: rgb(145, 255, 94);
+      }
+      &:active {
+        background: rgb(119, 255, 55);
+      }
+    }
+  }
+  &__navigation {
+    border-radius: 60px;
+    margin-bottom: 16px;
+  }
+  &__navigation-list {
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 8px;
+    gap: 2px;
+    border-radius: 60px;
+    background-color: rgb(255, 255, 255);
   }
   &__rewards {
     display: flex;
@@ -39,7 +117,23 @@
     color: rgb(151, 158, 166);
   }
   &__reward-comment {
-    font-family: Inter-Regular;
+    font-family: Inter-Regular, sans-serif;
     font-size: 20px;
+  }
+  &__add-reward-btn {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 40px;
+    background-color: rgb(119, 255, 55);
+    width: 87px;
+    height: 99px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(145, 255, 94);
+    }
+    &:active {
+      background-color: rgb(68, 214, 0);
+    }
   }
 }
