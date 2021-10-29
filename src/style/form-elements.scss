@@ -38,14 +38,18 @@
   cursor: pointer;
   padding: 16px;
   pointer-events: none;
+  position: relative;
   &--active {
     pointer-events: initial;
     background-color: rgb(119, 255, 55);
     color: initial;
     transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    will-change: transform;
     &:hover {
       background: rgb(145, 255, 93);
-      transform: scale(1.025);
+      transform: scale(1.025) translate3d( 0, 0, 0) perspective(1px);
       transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     &:active {

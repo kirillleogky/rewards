@@ -32,6 +32,7 @@
   }
   &__personal-info-amount {
     font-size: 36px;
+    letter-spacing: -0.03em;
   }
   &__personal-info-text {
     font-size: 16px;
@@ -133,8 +134,11 @@
     width: 87px;
     height: 99px;
     cursor: pointer;
+    transition: all .3s;
     &:hover {
       background-color: rgb(145, 255, 94);
+      transform: scale(1.05);
+      transition: all .3s;
     }
     &:active {
       background-color: rgb(68, 214, 0);
