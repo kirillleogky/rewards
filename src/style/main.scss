@@ -5,7 +5,7 @@ html {
 body {
   overflow-x: hidden;
   margin: 0;
-  font-family: Inter-Medium, sans-serif;
+  font-family: Inter-Regular, sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,6 +31,8 @@ textarea {
   border: 0;
   padding: 0;
   resize: none;
+  outline: none;
+  user-select: none;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -51,11 +53,11 @@ input[type="number"]:focus {
   justify-content: space-between;
   min-height: 100vh;
   width: 100vw;
+  background-color: rgb(241, 241, 241);
 }
 
 .page {
   box-sizing: border-box;
-  height: 100vh;
 }
 
 @font-face {

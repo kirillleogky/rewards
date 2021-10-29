@@ -37,4 +37,21 @@
   border-radius: 60px;
   cursor: pointer;
   padding: 16px;
+  pointer-events: none;
+  &--active {
+    pointer-events: initial;
+    background-color: rgb(119, 255, 55);
+    color: initial;
+    transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    &:hover {
+      background: rgb(145, 255, 93);
+      transform: scale(1.025);
+      transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    &:active {
+      background: rgb(68, 214, 0);
+      transform: scale(1);
+      transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  }
 }

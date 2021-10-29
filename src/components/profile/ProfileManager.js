@@ -2,32 +2,50 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setModal } from '../../store/actions/modalAction';
+import { getFromLocalStorage } from '../../utils';
 
-const rewardsList = [
-    {
-        image: '/images/person-1.webp',
-        rewardfulName: 'David Greene',
-        rewardingName: 'John Chen',
-        comment: 'Big thanks for everything',
-        rewardTime: '4 hours ago'
-    },
-    {
-        image: '/images/person-2.webp',
-        rewardfulName: 'Alex Brown',
-        rewardingName: 'Rajesh Kumar',
-        comment: 'Thanks for help',
-        rewardTime: 'Feb 1, 2021'
-    }
-];
 
 const ProfileManager = () => {
     const dispatch = useDispatch();
+    const rewardsList = getFromLocalStorage('rewards') || [];
+    const myRewardsList = rewardsList.filter(rewardItem => rewardItem.rewardfulName === 'Jane Doe');
+
+    const [isMyRewardListActive, setIsMyRewardListActive] = useState(false);
 
     const getRewardfulPersonImage = rewardItem => {
         return rewardItem.image ? rewardItem.image : '/images/default-icon.jpg';
     };
 
     const openAddRewardModal = () => dispatch(setModal('add-reward'));
+
+    const renderRewardList = currentRewardList => {
+        return (
+            currentRewardList.map(rewardItem =>
+                <li className="profile__reward" key={rewardItem.comment}>
+                    <div className="profile__reward-info">
+                        <img src={getRewardfulPersonImage(rewardItem)} alt="rewardful person"
+                             className="profile__reward-image"/>
+                        <div>
+                            <div
+                                className="profile__reward-names">{rewardItem.rewardingName} → {rewardItem.rewardfulName}</div>
+                            <div className="profile__reward-date">{rewardItem.rewardTime}</div>
+                        </div>
+                    </div>
+                    <div className="profile__reward-comment">{rewardItem.comment}</div>
+                </li>
+            ));
+    };
+
+    const getClassName = currentNavElem => {
+        let resultClassName = 'profile__navigation-item';
+        if (currentNavElem === 'feed' && !isMyRewardListActive) {
+            resultClassName += ` ${resultClassName}--active`;
+        }
+        if (currentNavElem === 'my rewards' && isMyRewardListActive) {
+            resultClassName += ` ${resultClassName}--active`;
+        }
+        return resultClassName;
+    };
 
     return <div className="page profile">
         <div className="profile__container">
@@ -41,7 +59,7 @@ const ProfileManager = () => {
                     </div>
                 </div>
                 <div className="profile__personal-info">
-                    <img src="/images/person-3.webp" alt="person"
+                    <img src="/images/person-5.webp" alt="person"
                          className="profile__personal-image"/>
                     <div className="profile__personal-name">Jane Doe</div>
                 </div>
@@ -57,26 +75,17 @@ const ProfileManager = () => {
             </div>
             <nav className="profile__navigation">
                 <ul className="profile__navigation-list">
-                    <li className="profile__navigation-item profile__navigation-item--active">Feed</li>
-                    <li className="profile__navigation-item">My rewards</li>
+                    <li className={getClassName('feed')} onClick={() => setIsMyRewardListActive(false)}>Feed</li>
+                    <li className={getClassName('my rewards')} onClick={() => setIsMyRewardListActive(true)}>My
+                        rewards
+                    </li>
                 </ul>
             </nav>
             <ul className="profile__rewards">
                 {
-                    rewardsList.map(rewardItem =>
-                        <li className="profile__reward" key={rewardItem.comment}>
-                            <div className="profile__reward-info">
-                                <img src={getRewardfulPersonImage(rewardItem)} alt="rewardful person"
-                                     className="profile__reward-image"/>
-                                <div>
-                                    <div
-                                        className="profile__reward-names">{rewardItem.rewardfulName} → {rewardItem.rewardingName}</div>
-                                    <div className="profile__reward-date">{rewardItem.rewardTime}</div>
-                                </div>
-                            </div>
-                            <div className="profile__reward-comment">{rewardItem.comment}</div>
-                        </li>
-                    )
+                    isMyRewardListActive
+                        ? renderRewardList(myRewardsList)
+                        : renderRewardList(rewardsList)
                 }
             </ul>
         </div>

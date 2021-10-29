@@ -1,5 +1,4 @@
 .profile {
-  background-color: rgb(241, 241, 241);
   &__container {
     @include responsive-left-right-spacing;
     padding-top: 20px;
@@ -48,6 +47,9 @@
     object-fit: cover;
     border-radius: 50%;
   }
+  &__personal-name {
+    font-family: Inter-Medium, sans-serif;
+  }
   &__navigation-item {
     padding: 8px 16px;
     border-radius: 40px;
@@ -61,6 +63,7 @@
       background: rgb(218, 222, 226);
     }
     &--active {
+      font-family: Inter-Medium, sans-serif;
       background: rgb(119, 255, 55);
       color: initial;
       &:hover {
@@ -111,6 +114,7 @@
     margin-right: 16px;
   }
   &__reward-names {
+    font-family: Inter-Medium, sans-serif;
     margin-bottom: 4px;
   }
   &__reward-date {
