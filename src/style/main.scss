@@ -35,10 +35,22 @@ textarea {
   user-select: none;
 }
 
+textarea {
+  &::-webkit-scrollbar {
+    appearance: none;
+    width: 4px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgb(151, 158, 166);
+  }
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
+input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px rgb(245, 247, 249) inset;
 }
 
