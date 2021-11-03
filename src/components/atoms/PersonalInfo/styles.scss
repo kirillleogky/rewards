@@ -1,0 +1,53 @@
+@import '../../../style/mixins.scss';
+@import '../../../style/variables.scss';
+
+.personal-info {
+  &__container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  &__gratitude {
+    padding-right: 4px;
+  }
+  &__reward, &__gratitude {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    @include media-breakpoint-up($md) {
+      width: 15vw;
+    }
+    @include media-breakpoint-down($md) {
+      width: 20vw;
+    }
+    @include media-breakpoint-down($sm) {
+      width: 30vw;
+    }
+  }
+  &__amount {
+    font-size: 36px;
+    letter-spacing: -0.03em;
+  }
+  &__text {
+    font-size: 16px;
+    color: rgb(151, 158, 166);
+  }
+  &__name-and-image {
+    margin: 0 28px;
+    text-align: center;
+  }
+  &__image {
+    width: $rewardful-person-image-width-big;
+    height: $rewardful-person-image-height-big;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  &__name {
+    font-family: Inter-Medium, sans-serif;
+  }
+
+}

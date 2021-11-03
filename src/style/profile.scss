@@ -4,127 +4,14 @@
     padding-top: 20px;
     margin: 0 auto;
   }
-  &__header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 24px;
-  }
-  &__personal-gratitude {
-    padding-right: 4px;
-  }
-  &__personal-reward, &__personal-gratitude {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    @include media-breakpoint-up($md) {
-      width: 15vw;
-    }
-    @include media-breakpoint-down($md) {
-      width: 20vw;
-    }
-    @include media-breakpoint-down($sm) {
-      width: 30vw;
-    }
-  }
-  &__personal-info-amount {
-    font-size: 36px;
-    letter-spacing: -0.03em;
-  }
-  &__personal-info-text {
-    font-size: 16px;
-    color: rgb(151, 158, 166);
-  }
-  &__personal-info {
-    margin: 0 28px;
-    text-align: center;
-  }
-  &__personal-image {
-    width: $rewardful-person-image-width-big;
-    height: $rewardful-person-image-height-big;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  &__personal-name {
-    font-family: Inter-Medium, sans-serif;
-  }
-  &__navigation-item {
-    padding: 8px 16px;
-    border-radius: 40px;
-    color: rgb(151, 158, 166);
-    cursor: pointer;
-    user-select: none;
-    &:hover {
-      background: rgb(245, 247, 249);
-    }
-    &:active {
-      background: rgb(218, 222, 226);
-    }
-    &--active {
-      font-family: Inter-Medium, sans-serif;
-      background: rgb(119, 255, 55);
-      color: initial;
-      &:hover {
-        background: rgb(145, 255, 94);
-      }
-      &:active {
-        background: rgb(119, 255, 55);
-      }
-    }
-  }
-  &__navigation {
+  &__navigation-list-container {
     border-radius: 60px;
     margin-bottom: 16px;
   }
-  &__navigation-list {
-    display: flex;
-    margin: 0 auto;
-    width: fit-content;
-    padding: 8px;
-    gap: 2px;
-    border-radius: 60px;
-    background-color: rgb(255, 255, 255);
-  }
-  &__rewards {
+  &__rewards-list-container {
     display: flex;
     flex-direction: column;
     margin-bottom: 28px;
-  }
-  &__reward {
-    width: 50%;
-    border-radius: 50px;
-    margin: 0 auto;
-    padding: 28px;
-    background-color: rgb(255, 255, 255);
-    &:not(:last-child) {
-      margin-bottom: 16px;
-    }
-  }
-  &__reward-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 24px;
-  }
-  &__reward-image {
-    width: $rewardful-person-image-width-small;
-    height: $rewardful-person-image-height-small;
-    object-fit: cover;
-    border-radius: 40px;
-    margin-right: 16px;
-  }
-  &__reward-names {
-    font-family: Inter-Medium, sans-serif;
-    margin-bottom: 4px;
-  }
-  &__reward-date {
-    color: rgb(151, 158, 166);
-  }
-  &__reward-comment {
-    font-family: Inter-Regular, sans-serif;
-    font-size: 20px;
   }
   &__add-reward-btn {
     position: absolute;

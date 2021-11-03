@@ -1,0 +1,35 @@
+@import '../../../style/variables.scss';
+
+.rewards-list {
+  width: 50%;
+  border-radius: 50px;
+  margin: 0 auto;
+  padding: 28px;
+  background-color: rgb(255, 255, 255);
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  &__image {
+    width: $rewardful-person-image-width-small;
+    height: $rewardful-person-image-height-small;
+    object-fit: cover;
+    border-radius: 40px;
+    margin-right: 16px;
+  }
+  &__names {
+    font-family: Inter-Medium, sans-serif;
+    margin-bottom: 4px;
+  }
+  &__date {
+    color: rgb(151, 158, 166);
+  }
+  &__comment {
+    font-family: Inter-Regular, sans-serif;
+    font-size: 20px;
+  }
+}
