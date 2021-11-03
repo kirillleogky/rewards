@@ -5,12 +5,7 @@ const initialState = {
     modal: ''
 };
 
-function setModal(state, action) {
-    return {
-        ...state,
-        modal: action.data
-    };
-}
+const setModal = (state, action) => ({ ...state, modal: action.data });
 
 export default createReducer(initialState, {
     [SET_MODAL]: setModal

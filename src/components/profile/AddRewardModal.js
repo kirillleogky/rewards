@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
-import { getCurrentDate, setLocalStorage, getFromLocalStorage } from '../../utils';
 
-const AddRewardModal = props => {
+import Label from '../atoms/Label';
+import Input from '../atoms/Input';
+import Textarea from '../atoms/Textarea';
+
+import { setLocalStorage, getFromLocalStorage } from '../../utils/localStorage';
+import { getCurrentDate } from '../../utils/getCurrentDate';
+import { formatMoney, deformatMoney } from '../../utils/formatMoney';
+
+const AddRewardModal = () => {
     const [rewardfulName, setRewardfulName] = useState('');
     const [rewardAmount, setRewardAmount] = useState('');
     const [comment, setComment] = useState('');
 
-    const rewardfulNameInputHandler = event => {
-        setRewardfulName(event.target.value);
-    };
-
-    const rewardAmountInputHandler = event => {
-        setRewardAmount(event.target.value);
-    };
-
-    const commentTextarearHandler = event => {
-        setComment(event.target.value);
+    const formHandler = event => {
+        if (event.target.name === 'rewardful name') {
+            setRewardfulName(event.target.value);
+        }
+        if (event.target.name === 'reward amount') {
+            setRewardAmount(deformatMoney(event.target.value));
+        }
+        if (event.target.name === 'reward description') {
+            setComment(event.target.value);
+        }
     };
 
     const getClassName = () => {
@@ -43,33 +50,27 @@ const AddRewardModal = props => {
             Give a reward for someone
         </div>
         <form className="form">
-            <label className="label">
-                To
-                <input type="text"
+            <Label labelText="To">
+                <Input type="text"
                        name="rewardful name"
                        placeholder="For example: Santa Claus, Yoda or Tim Berners-Lee"
-                       onChange={rewardfulNameInputHandler}
-                       value={rewardfulName}
-                       className="input"/>
-            </label>
-            <label className="label">
-                Reward
-                <input type="number"
+                       onChange={formHandler}
+                       value={rewardfulName}/>
+            </Label>
+            <Label labelText="Reward">
+                <Input type="text"
                        name="reward amount"
                        placeholder="0$"
-                       onChange={rewardAmountInputHandler}
-                       value={rewardAmount}
-                       className="input"/>
-            </label>
-            <label className="label">
-                Why
-                <textarea name="reward description"
+                       onChange={formHandler}
+                       value={rewardAmount ? formatMoney(rewardAmount) : rewardAmount}/>
+            </Label>
+            <Label labelText="Why">
+                <Textarea name="reward description"
                           rows="4"
                           placeholder="Tell her/him what this award is for"
-                          onChange={commentTextarearHandler}
-                          value={comment}
-                          className="textarea"/>
-            </label>
+                          onChange={formHandler}
+                          value={comment}/>
+            </Label>
             <button className={getClassName()} onClick={submit}>Give a reward →</button>
         </form>
     </div>;

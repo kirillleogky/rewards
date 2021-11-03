@@ -1,9 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { setModal } from '../../store/actions/modalAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+
+import { setModal } from '../../store/actions/modalAction';
+
 import Modal from '../elements/Modal';
 import AddRewardModal from '../profile/AddRewardModal';
-import { useLocation } from 'react-router-dom';
+
 
 const ModalLayout = () => {
     const dispatch = useDispatch();

@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { setModal } from '../../store/actions/modalAction';
-import { getFromLocalStorage } from '../../utils';
+
+import { getFromLocalStorage } from '../../utils/localStorage';
 
 
 const ProfileManager = () => {

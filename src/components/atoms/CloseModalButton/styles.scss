@@ -1,0 +1,19 @@
+.close-modal-btn {
+  background-color: rgb(255, 255, 255);
+  width: 69px;
+  height: 69px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  img {
+    transform: rotate(45deg);
+  }
+  &:hover {
+    transform: scale(1.2);
+    transition: transform .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  &:active {
+    transform: scale(1);
+    transition: transform .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}

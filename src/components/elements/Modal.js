@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import CloseModalButton from './CloseModalButton';
 
-const Modal = props => {
+import CloseModalButton from '../atoms/CloseModalButton';
+
+const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) => {
     const modalRef = useRef();
     let modalElement = modalRef.current;
-
-    const { children, showModalContent, onEnter, onExited, closeModal } = props;
 
     useEffect(() => {
         if (modalElement) {
@@ -40,7 +39,7 @@ const Modal = props => {
             <div className="modal__body">
                 {children}
             </div>
-            <CloseModalButton/>
+            <CloseModalButton closeModal={closeModal}/>
         </div>
     </CSSTransition>;
 };

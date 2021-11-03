@@ -1,0 +1,13 @@
+.input {
+  border-radius: 60px;
+  margin-top: 4px;
+  padding: 16px;
+  background-color: rgb(245, 247, 249);
+  font-family: Inter-Medium, sans-serif;
+  font-size: 16px;
+  &::placeholder {
+    font-family: Inter-Medium, sans-serif;
+    font-size: 16px;
+    color: rgb(151, 158, 166);
+  }
+}
