@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import ProfileManager from './components/profile/ProfileManager';
-import ModalLayout from './components/layout/ModalLayout';
+import ProfileManager from './components/pages/ProfileManager';
+import ModalLayout from './components/pages/ModalLayout';
 
 import { setLocalStorage, getFromLocalStorage } from './utils/localStorage';
 

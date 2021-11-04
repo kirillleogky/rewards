@@ -2,11 +2,10 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { setModal } from '../../store/actions/modalAction';
+import { setModal } from '../../../store/actions/modalAction';
 
-import Modal from '../elements/Modal';
-import AddRewardModal from '../profile/AddRewardModal';
-
+import Modal from '../../molecules/Modal';
+import AddRewardModal from '../../organisms/Modals/AddRewardModal';
 
 const ModalLayout = () => {
     const dispatch = useDispatch();
@@ -46,7 +45,7 @@ const ModalLayout = () => {
             setModalInfo(currentModalInfo);
         }
 
-        if (prevModalInfo.name !== currentModalInfo.name) {       // For opening one modal from another
+        if (prevModalInfo.name !== currentModalInfo.name) {         // For opening one modal from another
             setShowModalContent(!prevModalInfo.name);
         }
     }, [modalInfoString, previousModalInfoString, getModalContent]);

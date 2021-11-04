@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import RewardsList from '../atoms/RewardsList';
-import RewardsNavList from '../atoms/RewardsNavList';
-import PersonalInfo from '../atoms/PersonalInfo';
+import RewardsList from '../../organisms/RewardsList';
+import PersonalInfo from '../../organisms/PersonalInfo';
+import RewardsNavList from '../../atoms/RewardsNavList';
+import Button from '../../atoms/Button';
 
-import { setModal } from '../../store/actions/modalAction';
+import { setModal } from '../../../store/actions/modalAction';
 
-import { getFromLocalStorage } from '../../utils/localStorage';
+import { getFromLocalStorage } from '../../../utils/localStorage';
 
+import './styles.scss';
 
 const ProfileManager = () => {
     const dispatch = useDispatch();
@@ -40,9 +42,9 @@ const ProfileManager = () => {
                 <RewardsList currentRewardList={isPersonalRewardListActive ? personalRewardsList : rewardsList}/>
             </ul>
         </div>
-        <button className="profile__add-reward-btn" onClick={openAddRewardModal}>
-            <img src="/images/add-icon.svg" alt="add reward"/>
-        </button>
+        <Button closeModal={openAddRewardModal} className="add-reward-btn">
+          <img src="/images/add-icon.svg" alt="add reward"/>
+        </Button>
     </div>;
 };
 

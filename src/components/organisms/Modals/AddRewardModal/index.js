@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
-import Label from '../atoms/Label';
-import Input from '../atoms/Input';
-import Textarea from '../atoms/Textarea';
+import Label from '../../../atoms/Label';
+import Input from '../../../atoms/Input';
+import Textarea from '../../../atoms/Textarea';
+import Button from '../../../atoms/Button';
+import Form from '../../../atoms/Form';
 
-import { setLocalStorage, getFromLocalStorage } from '../../utils/localStorage';
-import { getCurrentDate } from '../../utils/getCurrentDate';
-import { formatMoney, deformatMoney } from '../../utils/formatMoney';
+import { setLocalStorage, getFromLocalStorage } from '../../../../utils/localStorage';
+import { getCurrentDate } from '../../../../utils/getCurrentDate';
+import { formatMoney, deformatMoney } from '../../../../utils/formatMoney';
 
 const AddRewardModal = () => {
     const [rewardfulName, setRewardfulName] = useState('');
@@ -49,7 +51,7 @@ const AddRewardModal = () => {
         <div className="modal-content__header">
             Give a reward for someone
         </div>
-        <form className="form">
+        <Form>
             <Label labelText="To">
                 <Input type="text"
                        name="rewardful name"
@@ -71,8 +73,10 @@ const AddRewardModal = () => {
                           onChange={formHandler}
                           value={comment}/>
             </Label>
-            <button className={getClassName()} onClick={submit}>Give a reward →</button>
-        </form>
+              <Button closeModal={submit} className={getClassName()}>
+                Give a reward →
+              </Button>
+        </Form>
     </div>;
 };
 

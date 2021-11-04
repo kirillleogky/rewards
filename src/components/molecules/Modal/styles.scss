@@ -1,3 +1,5 @@
+@import '../../../style/environment.scss';
+
 .modal {
   backdrop-filter: blur(4px);
   background: rgba(173, 178, 184, 0.8);
@@ -13,25 +15,6 @@
   overflow: auto;
   &__body {
     margin-bottom: 42px;
-  }
-}
-
-.modal-content {
-  margin-top: 86px;
-  background-color: rgb(255, 255, 255);
-  padding: 32px 28px;
-  border-radius: 50px;
-  @include media-desktop {
-    width: $modal-with-desktop;
-  }
-  @include media-mobile {
-    width: 100%;
-    padding: 0 16px;
-  }
-  &__header {
-    font-size: 36px;
-    margin-bottom: 28px;
-    letter-spacing: -0.04em;
   }
 }
 

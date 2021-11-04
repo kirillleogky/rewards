@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import CloseModalButton from '../atoms/CloseModalButton';
+import Button from '../../atoms/Button';
+
+import './styles.scss';
 
 const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) => {
     const modalRef = useRef();
@@ -39,7 +41,9 @@ const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) =>
             <div className="modal__body">
                 {children}
             </div>
-            <CloseModalButton closeModal={closeModal}/>
+            <Button closeModal={closeModal} className="close-modal-btn">
+              <img src="/images/add-icon.svg" alt="close modal"/>
+            </Button>
         </div>
     </CSSTransition>;
 };
