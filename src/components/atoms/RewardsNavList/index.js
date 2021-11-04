@@ -1,24 +1,28 @@
 import React from 'react';
+import classnames from 'classnames';
 
 import './styles.scss';
 
 const RewardsNavList = ({ isPersonalRewardListActive, toggleActiveRewardsList }) => {
 
-    const getClassName = currentNavElem => {
-        let resultClassName = 'rewards-nav-list__navigation-item';
-        if (currentNavElem === 'feed' && !isPersonalRewardListActive) {
-            resultClassName += ` ${resultClassName}--active`;
+    const feedClassProps = classnames(
+        'rewards-nav-list__navigation-item',
+        {
+            'rewards-nav-list__navigation-item--active': !isPersonalRewardListActive
         }
-        if (currentNavElem === 'my rewards' && isPersonalRewardListActive) {
-            resultClassName += ` ${resultClassName}--active`;
+    );
+
+    const personalRewardsClassProps = classnames(
+        'rewards-nav-list__navigation-item',
+        {
+            'rewards-nav-list__navigation-item--active': isPersonalRewardListActive
         }
-        return resultClassName;
-    };
+    );
 
     return (
         <ul className="rewards-nav-list">
-            <li className={getClassName('feed')} onClick={toggleActiveRewardsList}>Feed</li>
-            <li className={getClassName('my rewards')} onClick={toggleActiveRewardsList}>My
+            <li className={feedClassProps} onClick={toggleActiveRewardsList}>Feed</li>
+            <li className={personalRewardsClassProps} onClick={toggleActiveRewardsList}>My
                 rewards
             </li>
         </ul>

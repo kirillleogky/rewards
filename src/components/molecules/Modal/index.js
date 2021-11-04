@@ -42,7 +42,7 @@ const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) =>
                 {children}
             </div>
             <Button closeModal={closeModal} className="close-modal-btn">
-              <img src="/images/add-icon.svg" alt="close modal"/>
+                <img src="/images/add-icon.svg" alt="close modal"/>
             </Button>
         </div>
     </CSSTransition>;

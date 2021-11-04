@@ -43,7 +43,7 @@ const ProfileManager = () => {
             </ul>
         </div>
         <Button closeModal={openAddRewardModal} className="add-reward-btn">
-          <img src="/images/add-icon.svg" alt="add reward"/>
+            <img src="/images/add-icon.svg" alt="add reward"/>
         </Button>
     </div>;
 };

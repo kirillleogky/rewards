@@ -10,6 +10,8 @@ import { setLocalStorage, getFromLocalStorage } from '../../../../utils/localSto
 import { getCurrentDate } from '../../../../utils/getCurrentDate';
 import { formatMoney, deformatMoney } from '../../../../utils/formatMoney';
 
+import '../styles.scss';
+
 const AddRewardModal = () => {
     const [rewardfulName, setRewardfulName] = useState('');
     const [rewardAmount, setRewardAmount] = useState('');
@@ -27,13 +29,7 @@ const AddRewardModal = () => {
         }
     };
 
-    const getClassName = () => {
-        let resultClassName = 'submit-btn';
-        if (rewardfulName && rewardAmount && comment) {
-            resultClassName += ` ${resultClassName}--active`;
-        }
-        return resultClassName;
-    };
+    const isFormValid = () => rewardfulName && rewardAmount && comment;
 
     const submit = () => {
         const currentRewardList = getFromLocalStorage('rewards');
@@ -73,9 +69,9 @@ const AddRewardModal = () => {
                           onChange={formHandler}
                           value={comment}/>
             </Label>
-              <Button closeModal={submit} className={getClassName()}>
+            <Button closeModal={submit} className="submit-btn" isClassNameActive={isFormValid()}>
                 Give a reward →
-              </Button>
+            </Button>
         </Form>
     </div>;
 };
