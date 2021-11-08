@@ -5,26 +5,33 @@ import RewardsNavList from '../../atoms/RewardsNavList';
 
 import { getFromLocalStorage } from '../../../utils/localStorage';
 
-const Rewads = () => {
-    const rewardsList = getFromLocalStorage('rewards') || [];
-    const personalRewardsList = rewardsList.filter(rewardItem => rewardItem.rewardfulName === 'Jane Doe');
 
-    const [isPersonalRewardListActive, setIsPersonalRewardListActive] = useState(false);
+const REWARDS = getFromLocalStorage('rewards') || [];
+
+const TABS = {
+    FEED: 'Feed',
+    MY_REWARDS: 'My rewards'
+};
+
+const TABS_LIST = ['Feed', 'My rewards'];
+
+const REWARDS_LISTS = {
+    [TABS.FEED]: REWARDS,
+    [TABS.MY_REWARDS]: REWARDS.filter(rewardItem => rewardItem.rewardfulName === 'Jane Doe')
+};
+
+const Rewads = () => {
+    const [currentTabActive, setCurrentTabActive] = useState('Feed');
 
     const toggleActiveRewardsList = event => {
-        if (event.target.textContent === 'Feed') {
-            setIsPersonalRewardListActive(false);
-        }
-
-        if (event.target.textContent === 'My rewards') {
-            setIsPersonalRewardListActive(true);
-        }
+        setCurrentTabActive(event.target.textContent);
     };
 
     return <>
-        <RewardsNavList isPersonalRewardListActive={isPersonalRewardListActive}
+        <RewardsNavList currentTabActive={currentTabActive}
+                        tabsList={TABS_LIST}
                         toggleActiveRewardsList={toggleActiveRewardsList}/>
-        <RewardsList currentRewardList={isPersonalRewardListActive ? personalRewardsList : rewardsList}/>
+        <RewardsList currentRewardList={REWARDS_LISTS[currentTabActive]}/>
     </>;
 };
 

@@ -1,31 +1,22 @@
 import React from 'react';
-import classnames from 'classnames';
+
+import RewardTab from '../../atoms/RewardTab';
 
 import './styles.scss';
 
-const RewardsNavList = ({ isPersonalRewardListActive, toggleActiveRewardsList }) => {
-
-    const feedClassProps = classnames(
-        'rewards-nav-list__navigation-item',
-        {
-            'rewards-nav-list__navigation-item--active': !isPersonalRewardListActive
-        }
-    );
-
-    const personalRewardsClassProps = classnames(
-        'rewards-nav-list__navigation-item',
-        {
-            'rewards-nav-list__navigation-item--active': isPersonalRewardListActive
-        }
-    );
+const RewardsNavList = ({ currentTabActive, toggleActiveRewardsList, tabsList }) => {
 
     return (
         <nav className="rewards-nav-list-container">
             <ul className="rewards-nav-list">
-                <li className={feedClassProps} onClick={toggleActiveRewardsList}>Feed</li>
-                <li className={personalRewardsClassProps} onClick={toggleActiveRewardsList}>My
-                    rewards
-                </li>
+                {
+                    tabsList.map(tabName =>
+                        <RewardTab label={tabName}
+                                   isActiveTab={currentTabActive === tabName}
+                                   key={tabName}
+                                   setIsActiveTab={toggleActiveRewardsList}/>
+                    )
+                }
             </ul>
         </nav>
     );
