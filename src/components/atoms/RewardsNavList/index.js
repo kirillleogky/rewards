@@ -20,12 +20,14 @@ const RewardsNavList = ({ isPersonalRewardListActive, toggleActiveRewardsList })
     );
 
     return (
-        <ul className="rewards-nav-list">
-            <li className={feedClassProps} onClick={toggleActiveRewardsList}>Feed</li>
-            <li className={personalRewardsClassProps} onClick={toggleActiveRewardsList}>My
-                rewards
-            </li>
-        </ul>
+        <nav className="rewards-nav-list-container">
+            <ul className="rewards-nav-list">
+                <li className={feedClassProps} onClick={toggleActiveRewardsList}>Feed</li>
+                <li className={personalRewardsClassProps} onClick={toggleActiveRewardsList}>My
+                    rewards
+                </li>
+            </ul>
+        </nav>
     );
 };
 
