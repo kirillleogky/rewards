@@ -41,7 +41,7 @@ const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) =>
             <div className="modal__body">
                 {children}
             </div>
-            <Button closeModal={closeModal} className="close-modal-btn">
+            <Button onClick={closeModal} className="close-modal-btn">
                 <img src="/images/add-icon.svg" alt="close modal"/>
             </Button>
         </div>

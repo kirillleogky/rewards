@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Label from '../../../atoms/Label';
 import Input from '../../../atoms/Input';
@@ -6,72 +7,93 @@ import Textarea from '../../../atoms/Textarea';
 import Button from '../../../atoms/Button';
 import Form from '../../../atoms/Form';
 
+import { setModal } from '../../../../store/actions/modalAction';
+
 import { setLocalStorage, getFromLocalStorage } from '../../../../utils/localStorage';
 import { getCurrentDate } from '../../../../utils/getCurrentDate';
-import { formatMoney, deformatMoney } from '../../../../utils/formatMoney';
+import { formatMoney } from '../../../../utils/formatMoney';
+import { moveInputCursor } from '../../../../utils/moveInputCursor';
 
 import '../styles.scss';
 
-const AddRewardModal = () => {
-    const [rewardfulName, setRewardfulName] = useState('');
-    const [rewardAmount, setRewardAmount] = useState('');
-    const [comment, setComment] = useState('');
+const DEFAULT_FORM_INITIAL_VALUES = {
+    'rewardful name': '',
+    'reward amount': '',
+    'reward description': ''
+};
 
-    const formHandler = event => {
-        if (event.target.name === 'rewardful name') {
-            setRewardfulName(event.target.value);
-        }
-        if (event.target.name === 'reward amount') {
-            setRewardAmount(deformatMoney(event.target.value));
-        }
-        if (event.target.name === 'reward description') {
-            setComment(event.target.value);
-        }
+const AddRewardModal = () => {
+    const dispatch = useDispatch();
+    const [isFormValid, setIsFormValid] = useState(true);
+
+    const closeModal = () => {
+        dispatch(setModal(''));
     };
 
-    const isFormValid = () => rewardfulName && rewardAmount && comment;
-
-    const submit = () => {
+    const submit = formValues => {
         const currentRewardList = getFromLocalStorage('rewards');
         currentRewardList.unshift({
             image: '/images/person-5.webp',
-            rewardfulName: rewardfulName,
+            rewardfulName: formValues['rewardful name'],
             rewardingName: 'Jane Doe',
-            comment: comment,
+            comment: formValues['reward description'],
             rewardTime: getCurrentDate()
         });
         setLocalStorage('rewards', currentRewardList);
+        closeModal();
+    };
+
+    const getIsFormValid = formValues => {
+        let isCurrentFormValid = true;
+        for (const value in formValues) {
+            if (!formValues[value]) {
+                isCurrentFormValid = false;
+            }
+        }
+        setIsFormValid(isCurrentFormValid);
+    };
+
+    const onSaveMoneyFieldValue = saveFieldValue => event => {
+        if (event.target.value.length === 1) {
+            event.target.value = formatMoney(event.target.value);
+        }
+        moveInputCursor(event);
+        return saveFieldValue(event);
     };
 
     return <div className="modal-content">
         <div className="modal-content__header">
             Give a reward for someone
         </div>
-        <Form>
-            <Label labelText="To">
-                <Input type="text"
-                       name="rewardful name"
-                       placeholder="For example: Santa Claus, Yoda or Tim Berners-Lee"
-                       onChange={formHandler}
-                       value={rewardfulName}/>
-            </Label>
-            <Label labelText="Reward">
-                <Input type="text"
-                       name="reward amount"
-                       placeholder="0$"
-                       onChange={formHandler}
-                       value={rewardAmount ? formatMoney(rewardAmount) : rewardAmount}/>
-            </Label>
-            <Label labelText="Why">
-                <Textarea name="reward description"
-                          rows="4"
-                          placeholder="Tell her/him what this award is for"
-                          onChange={formHandler}
-                          value={comment}/>
-            </Label>
-            <Button closeModal={submit} className="submit-btn" isClassNameActive={isFormValid()}>
-                Give a reward →
-            </Button>
+        <Form initialValues={DEFAULT_FORM_INITIAL_VALUES} onSubmit={submit} getIsFormValid={getIsFormValid}>
+            {
+                (saveFieldValue, formValues) => (
+                    <>
+                        <Label labelText="To">
+                            <Input type="text"
+                                   name="rewardful name"
+                                   placeholder="For example: Santa Claus, Yoda or Tim Berners-Lee"
+                                   onChange={saveFieldValue}/>
+                        </Label>
+                        <Label labelText="Reward">
+                            <Input type="text"
+                                   name="reward amount"
+                                   placeholder="0$"
+                                   onClick={moveInputCursor}
+                                   onChange={onSaveMoneyFieldValue(saveFieldValue)}/>
+                        </Label>
+                        <Label labelText="Why">
+                            <Textarea name="reward description"
+                                      rows="4"
+                                      placeholder="Tell her/him what this award is for"
+                                      onChange={saveFieldValue}/>
+                        </Label>
+                        <Button className="submit-btn" isClassNameActive={isFormValid}>
+                            Give a reward →
+                        </Button>
+                    </>
+                )
+            }
         </Form>
     </div>;
 };

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import './styles.scss';
 
-const Button = ({ children, closeModal, className, isClassNameActive }) => {
+const Button = ({ children, onClick, className, isClassNameActive }) => {
     const classProps = classnames(
         className,
         {
@@ -11,7 +11,7 @@ const Button = ({ children, closeModal, className, isClassNameActive }) => {
         }
     );
 
-    return <button className={classProps} onClick={closeModal}>
+    return <button className={classProps} onClick={onClick}>
         {children}
     </button>;
 };

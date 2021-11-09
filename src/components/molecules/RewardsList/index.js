@@ -10,8 +10,8 @@ const RewardsList = ({ currentRewardList }) => {
     return (
         <ul className="rewards-list-container">
             {
-                currentRewardList.map(rewardItem =>
-                    <li className="rewards-list" key={rewardItem.comment}>
+                currentRewardList.map((rewardItem, index) =>
+                    <li className="rewards-list" key={index}>
                         <div className="rewards-list__info">
                             <img src={getRewardfulPersonImage(rewardItem)} alt="rewardful person"
                                  className="rewards-list__image"/>
