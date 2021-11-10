@@ -5,7 +5,7 @@ import Button from '../../atoms/Button';
 
 import './styles.scss';
 
-const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) => {
+const Modal = ({ children, showModalContent, onExited, closeModal }) => {
     const modalRef = useRef();
     let modalElement = modalRef.current;
 
@@ -32,7 +32,6 @@ const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) =>
                        timeout={300}
                        classNames="modal-animation-container"
                        unmountOnExit
-                       onEnter={onEnter}
                        onExited={onExited}
         >
             <div className="modal"

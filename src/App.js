@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import ProfileManager from './components/pages/ProfileManager';
 import ModalLayout from './components/pages/ModalLayout';
 
-import { setRewards } from './store/actions/rewardsAction';
+import { setInitialRewards } from './store/actions/rewardsAction';
 
 import { getFromLocalStorage } from './utils/localStorage';
 
@@ -46,9 +46,9 @@ const App = () => {
 
     useEffect(() => {
         if (!getFromLocalStorage('rewards')) {
-            dispatch(setRewards(rewardsList));
+            dispatch(setInitialRewards(rewardsList));
         } else {
-            dispatch(setRewards(getFromLocalStorage('rewards')));
+            dispatch(setInitialRewards(getFromLocalStorage('rewards')));
         }
     }, [dispatch]);
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Label from '../../../atoms/Label';
 import Input from '../../../atoms/Input';
@@ -10,7 +10,6 @@ import Form from '../../../atoms/Form';
 import { setModal } from '../../../../store/actions/modalAction';
 import { setRewards } from '../../../../store/actions/rewardsAction';
 
-import { setLocalStorage, getFromLocalStorage } from '../../../../utils/localStorage';
 import { getCurrentDate } from '../../../../utils/getCurrentDate';
 import { formatMoney } from '../../../../utils/formatMoney';
 import { moveInputCursor } from '../../../../utils/moveInputCursor';
@@ -25,7 +24,6 @@ const DEFAULT_FORM_INITIAL_VALUES = {
 
 const AddRewardModal = () => {
     const dispatch = useDispatch();
-    const currentRewardList = useSelector(state => state.rewards.rewards);
     const [isFormValid, setIsFormValid] = useState(true);
 
     const closeModal = () => {
@@ -33,16 +31,13 @@ const AddRewardModal = () => {
     };
 
     const submit = formValues => {
-        currentRewardList.unshift({
+        dispatch(setRewards({
             image: '/images/person-5.webp',
             rewardfulName: formValues['rewardful name'],
             rewardingName: 'Jane Doe',
             comment: formValues['reward description'],
             rewardTime: getCurrentDate()
-        });
-        setLocalStorage('rewards', currentRewardList);
-        console.log(currentRewardList, getFromLocalStorage('rewards'));
-        dispatch(setRewards(getFromLocalStorage('rewards')));
+        }));
         closeModal();
     };
 
