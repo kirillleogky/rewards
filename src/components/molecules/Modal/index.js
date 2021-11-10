@@ -27,25 +27,27 @@ const Modal = ({ children, showModalContent, onEnter, onExited, closeModal }) =>
         };
     }, [closeModal]);
 
-    return <CSSTransition in={showModalContent}
-                          timeout={300}
-                          classNames="modal-animation-container"
-                          unmountOnExit
-                          onEnter={onEnter}
-                          onExited={onExited}
-    >
-        <div className="modal"
-             data-close-modal={true}
-             ref={modalRef}
+    return (
+        <CSSTransition in={showModalContent}
+                       timeout={300}
+                       classNames="modal-animation-container"
+                       unmountOnExit
+                       onEnter={onEnter}
+                       onExited={onExited}
         >
-            <div className="modal__body">
-                {children}
+            <div className="modal"
+                 data-close-modal={true}
+                 ref={modalRef}
+            >
+                <div className="modal__body">
+                    {children}
+                </div>
+                <Button onClick={closeModal} className="close-modal-btn">
+                    <img src="/images/add-icon.svg" alt="close modal"/>
+                </Button>
             </div>
-            <Button onClick={closeModal} className="close-modal-btn">
-                <img src="/images/add-icon.svg" alt="close modal"/>
-            </Button>
-        </div>
-    </CSSTransition>;
+        </CSSTransition>
+    );
 };
 
 export default Modal;
