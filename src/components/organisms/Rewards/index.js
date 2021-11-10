@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import RewardsList from '../../molecules/RewardsList';
 import RewardsNavList from '../../atoms/RewardsNavList';
-
-import { getFromLocalStorage } from '../../../utils/localStorage';
 
 const TABS = {
     FEED: 'Feed',
@@ -19,7 +18,7 @@ const REWARDS_LISTS = {
 
 const Rewads = () => {
     const [currentTabActive, setCurrentTabActive] = useState('Feed');
-    const rewards = getFromLocalStorage('rewards') || [];
+    const rewards = useSelector(state => state.rewards.rewards);
 
     const toggleActiveRewardsList = event => {
         setCurrentTabActive(event.target.textContent);

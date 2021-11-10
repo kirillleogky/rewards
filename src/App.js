@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import ProfileManager from './components/pages/ProfileManager';
 import ModalLayout from './components/pages/ModalLayout';
 
-import { setLocalStorage, getFromLocalStorage } from './utils/localStorage';
+import { setRewards } from './store/actions/rewardsAction';
+
+import { getFromLocalStorage } from './utils/localStorage';
 
 
 const rewardsList = [
@@ -39,9 +42,16 @@ const rewardsList = [
 ];
 
 const App = () => {
-    if (!getFromLocalStorage('rewards')) {
-        setLocalStorage('rewards', rewardsList);
-    }
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (!getFromLocalStorage('rewards')) {
+            dispatch(setRewards(rewardsList));
+        } else {
+            dispatch(setRewards(getFromLocalStorage('rewards')));
+        }
+    }, [dispatch]);
+
     return <div className="app">
         <BrowserRouter>
             <ModalLayout/>
