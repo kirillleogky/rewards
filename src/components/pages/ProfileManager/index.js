@@ -10,6 +10,7 @@ import { setModal } from '../../../store/actions/modalAction';
 
 import './styles.scss';
 
+
 const ProfileManager = () => {
     const dispatch = useDispatch();
 

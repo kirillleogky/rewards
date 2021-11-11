@@ -4,8 +4,8 @@ import RewardTab from '../../atoms/RewardTab';
 
 import './styles.scss';
 
-const RewardsNavList = ({ currentTabActive, toggleActiveRewardsList, tabsList }) => {
 
+const RewardsNavList = ({ currentTabActive, toggleActiveRewardsList, tabsList }) => {
     return (
         <nav className="rewards-nav-list-container">
             <ul className="rewards-nav-list">

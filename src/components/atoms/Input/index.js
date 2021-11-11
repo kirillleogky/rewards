@@ -2,6 +2,7 @@ import React from 'react';
 
 import './styles.scss';
 
+
 const Input = ({ type, name, placeholder, onChange, value, onClick }) => {
     return <input type={type}
                   name={name}

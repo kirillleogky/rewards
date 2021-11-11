@@ -7,7 +7,7 @@ const Form = ({ children, initialValues, onSubmit, getIsFormValid }) => {
     const [formValues, setFormValues] = useState(initialValues);
 
     useEffect(() => {
-      getIsFormValid(formValues);
+        getIsFormValid(formValues);
     }, [formValues, getIsFormValid]);
 
     const submit = event => {
@@ -16,14 +16,14 @@ const Form = ({ children, initialValues, onSubmit, getIsFormValid }) => {
     };
 
     const saveFieldValue = event => {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [event.target.name]: event.target.value
-      }));
+        setFormValues(prevFormValues => ({
+            ...prevFormValues,
+            [event.target.name]: event.target.value
+        }));
     };
 
     return <form onSubmit={submit} className="form">
-        {children(saveFieldValue, formValues)}
+        {children(saveFieldValue)}
     </form>;
 };
 

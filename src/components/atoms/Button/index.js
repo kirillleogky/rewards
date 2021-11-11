@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 import './styles.scss';
 
+
 const Button = ({ children, onClick, className, isClassNameActive }) => {
     const classProps = classnames(
         className,

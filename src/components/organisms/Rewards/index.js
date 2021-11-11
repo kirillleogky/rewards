@@ -4,17 +4,8 @@ import { useSelector } from 'react-redux';
 import RewardsList from '../../molecules/RewardsList';
 import RewardsNavList from '../../atoms/RewardsNavList';
 
-const TABS = {
-    FEED: 'Feed',
-    MY_REWARDS: 'My rewards'
-};
+import { TABS_LIST, REWARDS_LISTS } from './constants';
 
-const TABS_LIST = ['Feed', 'My rewards'];
-
-const REWARDS_LISTS = {
-    [TABS.FEED]: rewards => rewards,
-    [TABS.MY_REWARDS]: rewards => rewards.filter(rewardItem => rewardItem.rewardfulName === 'Jane Doe')
-};
 
 const Rewads = () => {
     const [currentTabActive, setCurrentTabActive] = useState('Feed');

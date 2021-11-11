@@ -1,19 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import Button from '../../atoms/Button';
 
+import { ADD_ICON, TRANSITION_DURATION } from './constants';
+
 import './styles.scss';
 
-const Modal = ({ children, showModalContent, onExited, closeModal }) => {
-    const modalRef = useRef();
-    let modalElement = modalRef.current;
 
-    useEffect(() => {
-        if (modalElement) {
-            modalElement.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    }, [showModalContent, modalElement]);
+const Modal = ({ children, showModalContent, onExited, closeModal }) => {
 
     useEffect(() => {
         const onKeyPress = event => {
@@ -29,20 +24,19 @@ const Modal = ({ children, showModalContent, onExited, closeModal }) => {
 
     return (
         <CSSTransition in={showModalContent}
-                       timeout={300}
+                       timeout={TRANSITION_DURATION}
                        classNames="modal-animation-container"
                        unmountOnExit
                        onExited={onExited}
         >
             <div className="modal"
                  data-close-modal={true}
-                 ref={modalRef}
             >
                 <div className="modal__body">
                     {children}
                 </div>
                 <Button onClick={closeModal} className="close-modal-btn">
-                    <img src="/images/add-icon.svg" alt="close modal"/>
+                    <img src={ADD_ICON} alt="close modal"/>
                 </Button>
             </div>
         </CSSTransition>

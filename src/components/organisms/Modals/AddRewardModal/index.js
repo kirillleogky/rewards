@@ -14,13 +14,10 @@ import { getCurrentDate } from '../../../../utils/getCurrentDate';
 import { formatMoney } from '../../../../utils/formatMoney';
 import { moveInputCursor } from '../../../../utils/moveInputCursor';
 
+import { DEFAULT_FORM_INITIAL_VALUES, REWARDING_PERSON_INITIAL_VALUES } from './constants';
+
 import '../styles.scss';
 
-const DEFAULT_FORM_INITIAL_VALUES = {
-    'rewardful name': '',
-    'reward amount': '',
-    'reward description': ''
-};
 
 const AddRewardModal = () => {
     const dispatch = useDispatch();
@@ -32,9 +29,9 @@ const AddRewardModal = () => {
 
     const submit = formValues => {
         dispatch(setRewards({
-            image: '/images/person-5.webp',
+            image: REWARDING_PERSON_INITIAL_VALUES['IMAGE'],
             rewardfulName: formValues['rewardful name'],
-            rewardingName: 'Jane Doe',
+            rewardingName: REWARDING_PERSON_INITIAL_VALUES['NAME'],
             comment: formValues['reward description'],
             rewardTime: getCurrentDate()
         }));
@@ -65,7 +62,7 @@ const AddRewardModal = () => {
         </div>
         <Form initialValues={DEFAULT_FORM_INITIAL_VALUES} onSubmit={submit} getIsFormValid={getIsFormValid}>
             {
-                (saveFieldValue, formValues) => (
+                saveFieldValue => (
                     <>
                         <Label labelText="To">
                             <Input type="text"

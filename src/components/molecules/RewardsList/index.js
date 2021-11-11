@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { REWARDFUL_PERSON_DEFAULT_ICON } from './constants';
+
 import './styles.scss';
+
 
 const RewardsList = ({ currentRewardList }) => {
     const getRewardfulPersonImage = rewardItem => {
-        return rewardItem.image ? rewardItem.image : '/images/default-icon.jpg';
+        return rewardItem.image ? rewardItem.image : REWARDFUL_PERSON_DEFAULT_ICON;
     };
 
     return (

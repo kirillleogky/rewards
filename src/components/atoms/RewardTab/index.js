@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const RewardTab = ({ label, isActiveTab, setIsActiveTab }) => {
 
+const RewardTab = ({ label, isActiveTab, setIsActiveTab }) => {
     const tabClassProps = classnames(
         'rewards-nav-list__navigation-item',
         {

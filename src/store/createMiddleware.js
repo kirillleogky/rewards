@@ -1,7 +1,6 @@
 import { setLocalStorage } from '../utils/localStorage';
 
-export default function createMiddleware(store) {
-    return next => action => {
+const createMiddleware = store => next => action => {
         switch (action.type) {
             case 'SET_REWARDS':
                 next(action);
@@ -10,6 +9,7 @@ export default function createMiddleware(store) {
                 break;
             default:
                 next(action);
-        }
-    };
+        };
 }
+
+export default createMiddleware;
