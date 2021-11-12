@@ -29,9 +29,9 @@ const AddRewardModal = () => {
 
     const submit = formValues => {
         dispatch(setRewards({
-            image: REWARDING_PERSON_INITIAL_VALUES['IMAGE'],
+            image: REWARDING_PERSON_INITIAL_VALUES.IMAGE,
             rewardfulName: formValues['rewardful name'],
-            rewardingName: REWARDING_PERSON_INITIAL_VALUES['NAME'],
+            rewardingName: REWARDING_PERSON_INITIAL_VALUES.NAME,
             comment: formValues['reward description'],
             rewardTime: getCurrentDate()
         }));

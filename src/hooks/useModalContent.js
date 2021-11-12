@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { MODAL_CONTENT_BY_TYPE } from '../components/pages/ModalLayout/constants';
@@ -8,17 +8,14 @@ const getModalTypeSelector = state => state.modal.modal;
 export const useModalContent = () => {
     const modalType = useSelector(getModalTypeSelector);
     const ModalContent = MODAL_CONTENT_BY_TYPE[modalType] || null;
-    const showModalContent = !!ModalContent;
-
-    const prevRef = useRef('');
+    const [showModalContent, setShowModalContent] = useState(!!ModalContent);
     useEffect(() => {
-        prevRef.current = ModalContent;
-    });
-    const prevModalContent = prevRef.current;
+        setShowModalContent(!!ModalContent);
+    }, [ModalContent]);
 
     return {
         ModalContent,
         showModalContent,
-        prevModalContent
+        setShowModalContent
     };
 };

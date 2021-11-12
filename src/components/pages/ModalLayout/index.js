@@ -12,33 +12,28 @@ import { useModalContent } from '../../../hooks/useModalContent';
 const ModalLayout = () => {
     const dispatch = useDispatch();
     const location = useLocation();
-
     let {
         ModalContent,
         showModalContent,
-        prevModalContent
+        setShowModalContent
     } = useModalContent();
 
     useEffect(() => {
         dispatch(setModal(''));
     }, [location.pathname, dispatch]);
 
-
-    if (prevModalContent && !ModalContent) {
-        const currentModalContent = ModalContent;
-        ModalContent = prevModalContent;
-        setTimeout(() => {                                                        // Add delay when we close modal to prevent setting empty modal content (for animation)
-            ModalContent = currentModalContent;
-        }, 300);
-    }
-
     const closeModal = () => {
         dispatch(setModal(''));
     };
 
+    const hideModalContent = () => {
+        setShowModalContent(false);
+    };
+
     return (
-        <Modal closeModal={closeModal}
+        <Modal closeModal={hideModalContent}
                showModalContent={showModalContent}
+               onExited={closeModal}
         >
             {ModalContent && <ModalContent/>}
         </Modal>

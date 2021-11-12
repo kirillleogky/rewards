@@ -10,11 +10,13 @@ import { setModal } from '../../../store/actions/modalAction';
 
 import './styles.scss';
 
+import { ADD_ICON, REWARD_FROM_MODAL } from './constants';
+
 
 const ProfileManager = () => {
     const dispatch = useDispatch();
 
-    const openAddRewardModal = () => dispatch(setModal('add-reward'));
+    const openAddRewardModal = () => dispatch(setModal(REWARD_FROM_MODAL));
 
     return <div className="page profile">
         <div className="profile__container">
@@ -22,7 +24,7 @@ const ProfileManager = () => {
             <Rewads/>
         </div>
         <Button onClick={openAddRewardModal} className="add-reward-btn">
-            <img src="/images/add-icon.svg" alt="add reward"/>
+            <img src={ADD_ICON} alt="add reward"/>
         </Button>
     </div>;
 };
