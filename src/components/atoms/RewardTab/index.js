@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 
-const RewardTab = ({ label, isActiveTab, setIsActiveTab }) => {
+const RewardTab = ({ label, isActiveTab, toggleActiveTab }) => {
     const tabClassProps = classnames(
         'rewards-nav-list__navigation-item',
         {
@@ -11,7 +11,7 @@ const RewardTab = ({ label, isActiveTab, setIsActiveTab }) => {
     );
 
     return (
-        <li className={tabClassProps} onClick={setIsActiveTab}>{label}</li>
+        <li className={tabClassProps} onClick={toggleActiveTab}>{label}</li>
     );
 };
 

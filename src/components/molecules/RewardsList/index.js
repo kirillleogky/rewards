@@ -1,14 +1,9 @@
 import React from 'react';
 
-import { REWARDFUL_PERSON_DEFAULT_ICON } from './constants';
-
 import './styles.scss';
 
 
 const RewardsList = ({ currentRewardList }) => {
-    const getRewardfulPersonImage = rewardItem => {
-        return rewardItem.image ? rewardItem.image : REWARDFUL_PERSON_DEFAULT_ICON;
-    };
 
     return (
         <ul className="rewards-list-container">
@@ -16,7 +11,7 @@ const RewardsList = ({ currentRewardList }) => {
                 currentRewardList.map((rewardItem, index) =>
                     <li className="rewards-list" key={index}>
                         <div className="rewards-list__info">
-                            <img src={getRewardfulPersonImage(rewardItem)} alt="rewardful person"
+                            <img src={rewardItem.image} alt="rewardful person"
                                  className="rewards-list__image"/>
                             <div>
                                 <div

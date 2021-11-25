@@ -1,8 +1,9 @@
 import { createReducer } from '../storeUtils';
 import { SET_REWARDS, SET_INITIAL_REWARDS } from '../actions/rewardsAction';
+import { getDefaultRewardsList } from '../../utils/getDefaultRewardsList';
 
 const initialState = {
-    rewards: []
+    rewards: getDefaultRewardsList() || []
 };
 
 const setRewards = (state, action) => ({ ...state, rewards: [action.data, ...state.rewards] });
