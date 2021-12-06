@@ -12,9 +12,10 @@ const RewardsNavList = ({ currentTabActive, toggleActiveRewardsList, tabsList })
                 {
                     tabsList.map(({ label, tabName }, key) =>
                         <RewardTab label={label}
+                                   tabName={tabName}
                                    isActiveTab={currentTabActive === tabName}
                                    key={key}
-                                   toggleActiveTab={() => toggleActiveRewardsList(tabName)}/>
+                                   toggleActiveRewardsList={toggleActiveRewardsList}/>
                     )
                 }
             </ul>

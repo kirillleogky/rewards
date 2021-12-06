@@ -1,4 +1,6 @@
-export const DEFAULT_REWARDS_LIST = [
+import { IRewardsList } from '../interfaces/rewards.interfaces';
+
+export const DEFAULT_REWARDS_LIST: IRewardsList[] = [
     {
         'image': '/images/person-1.webp',
         'rewardfulName': 'Jane Doe',
